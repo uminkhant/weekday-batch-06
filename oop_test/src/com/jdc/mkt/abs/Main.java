@@ -7,6 +7,8 @@ class Main {
 		c.useColor();
 		c.show();
 	}
+	
+
 }
 
 abstract class Shape extends Color {
