@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		String res = checkTypeOfA(new A());
+		String res = checkTypeOfA(null);
 		System.out.println(res);
 	}
 	
