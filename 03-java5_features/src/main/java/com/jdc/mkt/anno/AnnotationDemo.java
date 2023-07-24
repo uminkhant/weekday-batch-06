@@ -35,6 +35,7 @@ public class AnnotationDemo implements Serializable {
 		if (null != ano) {
 			System.out.println("Name :" + ano.value() + "\tAge :" + ano.age());
 			System.out.println(ano.status());
+			
 		}
 	}
 	
