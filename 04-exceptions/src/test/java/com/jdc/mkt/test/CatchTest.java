@@ -1,8 +1,5 @@
 package com.jdc.mkt.test;
 
-import java.io.File;
-import java.io.IOException;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -51,10 +48,9 @@ public class CatchTest {
 		try {
 			an.name = "Hello";
 			System.out.println(an.name);
-			File f = new File("C:/test.txt");
-			f.createNewFile();
+			
 
-		} catch (NullPointerException | IOException e) {
+		} catch (NullPointerException | ArithmeticException e) {
 			System.out.println("Null value");
 		}
 	}
