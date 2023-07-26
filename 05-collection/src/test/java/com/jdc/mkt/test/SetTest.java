@@ -21,8 +21,11 @@ public class SetTest {
 	void create() {
 		set = getImpl("link");		
 		//addPersons();
-		addStringValues();
+		//addStringValues();
+			
 	}
+	
+	
 //	void addPersons() {
 //		set.add(new Person("Andrew", 30));
 //		set.add(new Person("William", 45));
@@ -54,11 +57,12 @@ public class SetTest {
 	@Order(1)
 	@DisplayName("1.show all elements")
 	void test1() {
+	
 		
 		for(String s :set) {
 			System.out.println(s);
 		}
-		//System.out.println("Using iterator obj");
+		System.out.println("Using iterator obj");
 		
 //		Iterator<String> itr = set.iterator();
 //		while(itr.hasNext()) {
