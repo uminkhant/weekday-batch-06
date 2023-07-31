@@ -30,11 +30,6 @@ abstract class Color {
 	void show() {
 		System.out.println("Showing");
 	}
-
-	
-
-	private static void doSomething() {
-	}
 }
 
 class Square extends Shape {

@@ -11,22 +11,31 @@ public class ListDemo {
 	
 	public static void main(String[] args) {
 		
-		List<Integer> array = getListObj("array");
-		ArrayList<Integer> ar = new ArrayList<Integer>();
+//		List<Integer> array = getListObj("array");
+//		ArrayList<Integer> ar = new ArrayList<Integer>();
+//		
+//		long l1 =  getMillis(array,"add");
+//		System.out.println("Time For Array List : "+l1);
+//		
+//	
+//		List<Integer> link = getListObj("link");
+//		long l2 =  getMillis(link,"add");
+//		System.out.println("Time For Link List : "+l2);
+//		
+//		long l3 =  getMillis(array,"s");
+//		System.out.println("Time For Array List : "+l3);
+//		
+//		long l4 =  getMillis(link,"s");
+//		System.out.println("Time For Link List : "+l4);
 		
-		long l1 =  getMillis(array,"add");
-		System.out.println("Time For Array List : "+l1);
 		
-	
-		List<Integer> link = getListObj("link");
-		long l2 =  getMillis(link,"add");
-		System.out.println("Time For Link List : "+l2);
+		Person p1 = new Person("Hello", 11);
+		Person p2 = new Person("Hello", 10);
 		
-		long l3 =  getMillis(array,"s");
-		System.out.println("Time For Array List : "+l3);
+		new String("s");
+		new String("s");
 		
-		long l4 =  getMillis(link,"s");
-		System.out.println("Time For Link List : "+l4);
+		System.out.println(p1.equals(p2));
 		
 	}
 	

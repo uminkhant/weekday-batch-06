@@ -1,7 +1,5 @@
 package com.jdc.mkt.test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;

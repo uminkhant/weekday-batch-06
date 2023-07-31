@@ -3,13 +3,6 @@ package com.jdc.mkt.polymorphism;
 public class Main {
 
 	public static void main(String[] args) {
-		//Same object from different references
-		C c = new C();
-		B b = c;
-		A a = c;
-		MyInter i = c;
-		MyAbstract abs = c;
-		
 		A aa = new B();
 		aa.doSomething();
 	}

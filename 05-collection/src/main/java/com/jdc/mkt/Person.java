@@ -2,10 +2,11 @@ package com.jdc.mkt;
 
 import java.util.Objects;
 
-public class Person implements Comparable<Person>{
+public class Person extends Object implements Comparable<Person>{
 
 	private String name;
 	private int age;
+	
 	
 	public Person(String name, int age) {
 		super();
@@ -48,6 +49,11 @@ public class Person implements Comparable<Person>{
 		Person other = (Person) obj;
 		return age == other.age && Objects.equals(name, other.name);
 	}
+
 	
 	
+	
+}
+
+class Human{
 }

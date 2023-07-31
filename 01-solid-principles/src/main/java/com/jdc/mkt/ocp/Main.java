@@ -27,10 +27,7 @@ public class Main {
 
 abstract class Room{
 	 double charges = 10000;
-	private static Room room;
-	
 	public static Room getRoom(Room room) {
-		Room.room = room;
 		return room;
 	}
 	
