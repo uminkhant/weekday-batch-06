@@ -8,9 +8,12 @@ import java.time.LocalTime;
 import java.time.Period;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
+
+import javax.swing.JOptionPane;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -58,31 +61,53 @@ public class LocalDateTimeTest {
 
 	}
 
-	//@Test
+	// @Test
 	void test4() {
 		LocalDateTime ldt = LocalDateTime.now();
 		System.out.println(ldt.get(ChronoField.DAY_OF_YEAR));
 		var p = Period.ofMonths(2);
-		
+
 		ldt = ldt.plus(p);
 		ldt = ldt.minus(p);
 		ldt = ldt.with(ChronoField.YEAR, 2020);
 		System.out.println(ldt);
 		ldt = ldt.plus(60, ChronoUnit.MINUTES);
 		System.out.println(ldt.getHour());
-		
+
 	}
-	@Test 
+
+	// @Test
 	void test5() {
 		Duration d = Duration.between(LocalTime.now(), LocalTime.of(16, 00));
 		LocalTime t = LocalTime.ofSecondOfDay(d.getSeconds());
 		System.out.println(t);
-		
+
 		Period p = Period.between(LocalDate.now(), LocalDate.of(2024, 04, 20));
 		System.out.println(p);
-		
+
 		LocalDate ld = LocalDate.now();
 		System.out.println(ld.get(ChronoField.MONTH_OF_YEAR));
 		System.out.println(ld.getMonth());
+
+	}
+
+	@Test
+	void terst6() {
+		LocalDateTime ld = LocalDateTime.of(LocalDate.now(), LocalTime.of(14, 20));
+		System.out.println(ld.format(
+				DateTimeFormatter.ISO_DATE_TIME));
+		System.out.println(ld.format(
+				DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)));
+		System.out.println(ld.format(
+				DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT)));
+		
+		
+		DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		String result = ld.format(df);
+		System.out.println(result);
+		LocalDateTime ldt = LocalDateTime.parse(result, df);
+		System.out.println(ldt);
+	
+		
 	}
 }
