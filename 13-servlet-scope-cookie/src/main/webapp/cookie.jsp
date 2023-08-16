@@ -45,11 +45,22 @@
 		<form action="cookie" class="form" method="post">
 			<div class="form-group">
 				<label >UserName</label>
-				<input style="margin-right:1px;" type="text" class="form-control" name ="username"/>
+				<% if(request.getAttribute("name") != null){ %>
+				<input style="margin-right:1px;" type="text" class="form-control" name ="username" 
+				value = <%=request.getAttribute("name") %>/>
+				<%}else{ %>
+				<input style="margin-right:1px;" type="text" class="form-control" name ="username"/>		
+				<%} %>
 			</div>
 			<div class="form-group">
 				<label for="" >Password</label>
+				<% if(request.getAttribute("pass") != null){ %>
+				<input type="text" class="form-control" name="password"
+				value = <%=request.getAttribute("pass") %>
+				/>
+				<%}else{ %>
 				<input type="text" class="form-control" name="password"/>
+				<%} %>
 			</div>
 			<button class= "btn" type="submit">Login</button>
 		</form>
