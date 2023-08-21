@@ -45,7 +45,7 @@
 				<label for="" class="form-label">Image</label>
 				<input type="file" accept="image/*" class="form-control" name="image" />
 			</div>
-			<button type="submit">Save</button>
+			<button type="submit" class="btn btn-outline-primary mt-2">Save</button>
 		</form>
 	</div>
 </body>
