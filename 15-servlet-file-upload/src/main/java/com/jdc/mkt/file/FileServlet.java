@@ -5,7 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import com.jdc.mkt.file.Member.Role;
+import com.jdc.mkt.entity.Member;
+import com.jdc.mkt.entity.Member.Role;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -42,7 +43,8 @@ public class FileServlet extends HttpServlet {
 					Role.valueOf(array[2]),
 					array[3],
 					array[4],
-					array[5]);
+					array[5],
+					array[6]);
 				list.add(member);
 			}
 		}catch (Exception e) {

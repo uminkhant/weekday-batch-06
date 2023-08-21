@@ -1,5 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="com.jdc.mkt.file.Member"%>
+<%@page import="com.jdc.mkt.entity.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>

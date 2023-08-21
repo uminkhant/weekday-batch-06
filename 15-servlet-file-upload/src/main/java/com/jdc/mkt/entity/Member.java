@@ -1,4 +1,4 @@
-package com.jdc.mkt.file;
+package com.jdc.mkt.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,7 +17,7 @@ public class Member {
 	private String loginId;
 	private String password;
 	private String email;
-	
+	private String image;
 	
 	
 	public enum Role{
