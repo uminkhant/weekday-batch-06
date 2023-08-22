@@ -24,6 +24,7 @@
 			<li><a href="script.jsp">Script Tag</a></li>
 			<li><a href="action.jsp">Action Tag</a></li>
 			<li><a href="elExpression.jsp">El Expression</a></li>
+			<li><a href="useJstl.jsp">JSTL Test</a></li>
 		</ol>
 	</div>
 </body>
