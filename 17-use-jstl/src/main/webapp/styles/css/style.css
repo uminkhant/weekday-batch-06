@@ -1,0 +1,19 @@
+
+.text-color{
+	color: darkorange;
+	
+}
+.btn-style{
+	background-color: none;
+	border: 1px solid darkorange;
+	color:darkorange;
+	text-decoration: none;
+	padding: 8px;
+	border-radius: 5px;
+}
+
+.btn-style:hover{
+	background-color: darkorange;
+	border:  white;
+	color:white;
+}
