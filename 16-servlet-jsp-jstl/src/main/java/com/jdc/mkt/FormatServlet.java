@@ -1,4 +1,4 @@
-package com.jdc.mkt.servlet;
+package com.jdc.mkt;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -10,16 +10,21 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet({"/addProduct","/showProduct"})
-public class ProductServlet extends HttpServlet{
+@WebServlet("/useJstl")
+public class FormatServlet  extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
-
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		var localDate = LocalDate.now();
-		req.setAttribute("ld", localDate);
-		getServletContext().getRequestDispatcher("/product.jsp").forward(req, resp);
+		Date date = new Date();		
+		LocalDate ld = LocalDate.now();
+		
+		req.setAttribute("date",date);
+		req.setAttribute("localDate", ld);
+		
+		getServletContext().getRequestDispatcher("/useJstl.jsp").forward(req, resp);
 	}
+
 }

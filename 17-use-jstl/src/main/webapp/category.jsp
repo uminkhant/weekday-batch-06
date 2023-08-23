@@ -24,37 +24,62 @@
 <body>
 	<app:header pageName="Category" icon="bi bi-tags-fill"></app:header>
 	<div class="container mt-4">
-
-		<a id="addNewBtn" class="btn-style"><i class="bi bi-plus"></i> Add New</a>
+		<div class="text-end">
+			<a id="addNewBtn" class="btn-style"><i class="bi bi-plus"></i> Add New</a>
+		</div>
 		<div class="show">
+		<c:set var="list" value="${requestScope.categories }"></c:set>
+		<c:choose>
+		<c:when test="${ not empty list }">
 			<table class="table table-striped">
 				<thead>
 					<tr>
 						<th>No.</th>
 						<th>Name</th>
+						<th></th>
 					</tr>
 				</thead>
+				<tbody>
+					<c:forEach var="c" items="${list }" varStatus="count"  >
+						<tr>
+							<td>${count.index+1 }</td>
+							<td>${c.name }</td>
+							<td class="text-end">
+								<a id="" class="btn-style text-end"><i class="bi bi-plus"></i> Edit</a>
+							</td>
+						</tr>
+					</c:forEach>
+				</tbody>
 			</table>
+		</c:when>
+		<c:otherwise>
+			<p class="text-primary">There is no category yet !</p>
+		</c:otherwise>
+		</c:choose>
+			
 		</div>
 	</div>
 	<app:footer></app:footer>
 
+<!-- modal -->
+
 	<div id="modal" class="modal fade" tabindex="-1">
 		<div class="modal-dialog">
+		<c:url var="add" value="/addCategory"></c:url>
 			<div class="modal-content">
-				<form action="addCategory" method="post">
+				<form action="${ add }" method="post" >
 					<div class="modal-header">
 						<h5 class="modal-title">Add Category</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
-						<input type="text" name="category" placeholder="Category name" />
+						<input class="form-control" type="text" name="category" placeholder="Category name" />
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-bs-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-primary">Save</button>
+						<button type="submit" class="btn-style">Save</button>
 					</div>
 				</form>
 			</div>

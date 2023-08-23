@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@ taglib prefix="myTag" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,16 +17,5 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="container">
-	
-		<h1>Script Tags</h1>
-		
-		<ol>
-			<li><a href="script.jsp">Script Tag</a></li>
-			<li><a href="action.jsp">Action Tag</a></li>
-			<li><a href="elExpression.jsp">El Expression</a></li>
-			<li><a href="useJstl">JSTL Test</a></li>
-			<li><a href="customTag.jsp">Custom Tag</a></li>
-		</ol>
-	</div>
+	<myTag:messageTag message="Hello custom tag"></myTag:messageTag>
 </body>

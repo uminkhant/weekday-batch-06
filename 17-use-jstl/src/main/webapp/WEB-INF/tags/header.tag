@@ -3,6 +3,7 @@
 <%@ attribute name="pageName" required="true"%>
 <%@ attribute name="icon" required="true"%>
 
+<c:url var="member" value="/member" />
 <c:url var="category" value="/category" />	
 <c:url var="addProduct" value="/addProduct" />
 <c:url var="showProduct" value="/showProduct" />
@@ -18,6 +19,9 @@
 		<div class="collapse navbar-collapse" id="myNav">
 			<ul class="navbar-nav  mb-2 mb-lg-0">
 
+				<li class="nav-item"><a
+					class="nav-link  ${pageName eq 'Member' ? 'active' : '' }"
+					href="${member }">Member</a></li>
 				<li class="nav-item"><a
 					class="nav-link  ${pageName eq 'Category' ? 'active' : '' }"
 					href="${category }">Category</a></li>
@@ -39,6 +43,12 @@
 </nav>
 
 <section class="container mt-4">
-	<h1 class="text-color"><i class="${icon }"></i> ${pageName }</h1>
+	<h3 class="text-color"><i class="${icon }"></i> ${pageName }</h3>
 	
 </section>
+
+
+
+
+
+
