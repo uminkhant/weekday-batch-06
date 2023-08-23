@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.jdc.mkt.entity.Category;
 
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Persistence;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -24,14 +25,11 @@ public class CategoryServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		emf = Persistence.createEntityManagerFactory("use-jstl");
-		var em = emf.createEntityManager();
-		em.getTransaction().begin();
-		var cat = new Category(0,"Foods");
-		em.persist(cat);
+		var em =emf.createEntityManager();
 		
-		em.getTransaction().commit();
-		
-		
+		var query = em.createNamedQuery("getAllCategory", Category.class);
+		req.setAttribute("categories", query.getResultList());
+		System.out.println("Size"+ query.getResultList().size());
 		getServletContext().getRequestDispatcher("/category.jsp").forward(req, resp);
 	}
 }

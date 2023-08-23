@@ -17,7 +17,7 @@
                         
         
         <property name="java-output-path" value="/17-use-jstl/target/classes"/>
-        <property name="context-root" value="17-products"/>
+        <property name="context-root" value="17-use-jstl"/>
                     
     
     </wb-module>
