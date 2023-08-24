@@ -5,7 +5,6 @@ import java.io.IOException;
 import com.jdc.mkt.entity.Category;
 import com.jdc.mkt.servlet.utils.FactoryServlet;
 
-import jakarta.persistence.EntityManagerFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,7 +29,7 @@ public class CategoryServlet extends FactoryServlet {
 		String name = req.getParameter("category");
 		var em = createEntityManager();	
 		em.getTransaction().begin();
-		em.persist( new Category(0,name));
+		em.persist( new Category(name));
 		em.getTransaction().commit();
 		closeEntityManager();
 		resp.sendRedirect("/category");

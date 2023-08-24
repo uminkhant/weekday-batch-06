@@ -7,7 +7,7 @@
 <c:url var="category" value="/category" />	
 <c:url var="addProduct" value="/addProduct" />
 <c:url var="showProduct" value="/showProduct" />
-<c:url var="index" value="index.jsp" />
+<c:url var="index" value="/" />
 
 <nav class="navbar navbar-expand-lg ">
 	<div class="container-fluid">

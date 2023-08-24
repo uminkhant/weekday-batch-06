@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
-<%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html>
@@ -23,8 +22,32 @@
 </head>
 <body>
 
-	<app:header pageName="Product" icon="bi bi-tag-fill"></app:header>
-	
+	<app:header pageName="Welcome" icon="bi bi-house"></app:header>
+	<div class="container mt-4">
+		<div class="row">
+			<c:set var="list" value="${requestScope.products }"></c:set>
+			<c:choose>
+				<c:when test="${not empty list }">
+					<c:forEach var="p" items="${list }">
+						<div class="col-sm-4 p-2">
+							<div class="card text-center">
+								<div class="card-body">
+									<h5 class="card-title">${p.name }</h5>
+									<p class="card-text">Retail Price : <span class="text-danger">${p.detailPrice }</span> </p>
+									<p class="card-text">Whole Sale Price : <span class="text-danger">${p.wholeSalePrice }</span> </p>
+									<a href="#" class="btn-style">Add To Card</a>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<p>There is no product</p>
+				</c:otherwise>
+			</c:choose>
+		</div>
+	</div>
+
+
 	<app:footer></app:footer>
 </body>
-</html>

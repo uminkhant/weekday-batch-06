@@ -10,16 +10,16 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet({"/addProduct","/showProduct"})
-public class ProductServlet extends FactoryServlet{
+@WebServlet(urlPatterns =  "/",loadOnStartup = 1)
+public class WelcomeServlet extends FactoryServlet{
 
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		var em = createEntityManager();
-		var query = em.createNamedQuery("getAllProduct",Product.class);
-		req.setAttribute("products", query.getResultList());	
-		getServletContext().getRequestDispatcher("/showProduct.jsp").forward(req, resp);
+		var query = em.createNamedQuery("getAllProduct", Product.class);
+		req.setAttribute("products", query.getResultList());
+		getServletContext().getRequestDispatcher("/welcome.jsp").forward(req, resp);
 	}
 }
