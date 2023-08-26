@@ -13,11 +13,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class Member implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -38,7 +40,18 @@ public class Member implements Serializable{
 	
 	
 	
+	public Member(String name, String loginId, String password, Address address, List<Contact> contacts) {
+		super();
+		this.name = name;
+		this.loginId = loginId;
+		this.password = password;
+		this.address = address;
+		this.contacts = contacts;
+	}
+
+
+
 	public enum Role{
-		AMDIN,CUSTOMER
+		AMDIN,CASHIER,CUSTOMER
 	}
 }

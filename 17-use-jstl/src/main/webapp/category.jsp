@@ -23,7 +23,7 @@
 </head>
 <body>
 	<app:header pageName="Category" icon="bi bi-tags-fill"></app:header>
-	<div class="container mt-4">
+	<div class="container mt-4 p-4 w-75">
 		<div class="text-end">
 			<a id="addNewBtn" class="btn-style me-2"><i class="bi bi-plus"></i> Add New</a>
 		</div>
@@ -45,7 +45,7 @@
 							<td>${count.index+1 }</td>
 							<td>${c.name }</td>
 							<td class="text-end">
-								<a id="" class="btn-style text-end"><i class="bi bi-plus"></i> Edit</a>
+								<a id="" class="editBtn btn-style text-end"><i class="bi bi-plus"></i> Edit</a>
 							</td>
 						</tr>
 					</c:forEach>

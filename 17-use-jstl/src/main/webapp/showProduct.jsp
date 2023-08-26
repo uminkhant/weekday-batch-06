@@ -25,7 +25,7 @@
 
 	<app:header pageName="Product" icon="bi bi-tag-fill"></app:header>
 	
-	<div class="container">
+	<div class="container mt-4 p-4">
 		<c:set var="list" value="${requestScope.products }"></c:set>
 		<c:choose>
 		<c:when test="${ not empty list }">

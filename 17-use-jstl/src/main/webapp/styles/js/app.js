@@ -5,3 +5,5 @@ const modal = document.getElementById('modal')
 			const dialog = new bootstrap.Modal(modal)
 			dialog.show()
 		})
+		
+		

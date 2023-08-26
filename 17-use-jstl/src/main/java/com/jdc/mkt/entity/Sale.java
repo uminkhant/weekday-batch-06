@@ -1,14 +1,13 @@
 package com.jdc.mkt.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,25 +17,27 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@NamedQuery(name = "getAllCategory" ,query = "select c from Category c")
-public class Category implements Serializable {
+public class Sale implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String name;
-	@OneToMany(mappedBy = "category")
-	private List<Product> products = new ArrayList<Product>() ;
+	private Member customer;
+	private Member cashier;
+	private LocalDateTime saleDate;
+	private int total;
+	@OneToMany(mappedBy = "sale")
+	private List< SaleDetails> saleDetials;
 	
-	public Category(String name) {
+	public Sale(Member customer, Member cashier, LocalDateTime saleDate, int total, List<SaleDetails> saleDetials) {
 		super();
-		this.name = name;
+		this.customer = customer;
+		this.cashier = cashier;
+		this.saleDate = saleDate;
+		this.total = total;
+		this.saleDetials = saleDetials;
 	}
 	
-	public void addProduct(Product product) {
-		product.setCategory(this);
-		this.products.add(product);
-	}
 	
 }

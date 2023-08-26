@@ -1,5 +1,8 @@
 package com.jdc.mkt.listener;
 
+import com.jdc.mkt.entity.Category;
+import com.jdc.mkt.entity.Product;
+
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.servlet.ServletContextEvent;
@@ -14,11 +17,19 @@ public class ApplicationListener implements ServletContextListener{
 	public void contextInitialized(ServletContextEvent sce) {
 		emf = Persistence.createEntityManagerFactory("use-jstl");
 		sce.getServletContext().setAttribute("emf", emf);
+		
+		var em = emf.createEntityManager();
+		
+		var qCategory = em.createNamedQuery("getAllCategory", Category.class);
+		sce.getServletContext().setAttribute("categories",qCategory.getResultList());
+		
+		var qProduct = em.createNamedQuery("getAllProduct",Product.class);
+		sce.getServletContext().setAttribute("products", qProduct.getResultList());
+		
 	}
 	
 	@Override
 	public void contextDestroyed(ServletContextEvent sce) {
-		System.out.println("-----------------------Context Destroyed--------------");
 		if(null != emf && emf.isOpen()) {
 			emf.close();
 		}
