@@ -54,15 +54,15 @@
 								<td>${m.address.street }</td>
 															
 								<td>
-								<c:forEach var="phone" items="${m.contacts }">
-									<p>${phone.phone }</p>
+								<c:forEach var="p" items="${m.contacts }">
+									<p>${p.phone }</p>
 								</c:forEach>
 								</td>
 							</tr>
 						</c:forEach>
 					</c:when>
 					<c:otherwise>
-						<p class="text-primary">There is no member !</p>
+						<p class="text-danger">There is no member !</p>
 					</c:otherwise>
 				</c:choose>
 			</tbody>

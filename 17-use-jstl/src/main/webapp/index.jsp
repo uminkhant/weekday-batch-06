@@ -29,10 +29,10 @@
 				<c:when test="${not empty list }">
 					<c:forEach var="p" items="${list }">
 						<div class="col-sm-3 p-2">
-							<div class="card">
-								<img src="images/${p.image}" class="card-img-top p-4 w-100" height="300px" alt="..." >
+							<div class="card p-2">
+								<img src="images/${p.image}" class="card-img-top p-4"  alt="..." >
 								<div class="card-body">
-									<h5 class="card-title">${p.name }</h5>
+									<h5 class="card-title text-color">${p.name }</h5>
 									<p class="card-text">${p.description }</p>
 									<div>
 										<a href="#" class="btn-style">Details</a>
@@ -45,7 +45,7 @@
 					</c:forEach>
 				</c:when>
 				<c:otherwise>
-					<p>There is no product</p>
+					<p class="text-danger">There is no product</p>
 				</c:otherwise>
 			</c:choose>
 		</div>

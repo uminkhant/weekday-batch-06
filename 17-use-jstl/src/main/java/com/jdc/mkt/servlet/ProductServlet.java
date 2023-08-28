@@ -26,8 +26,6 @@ public class ProductServlet extends FactoryServlet{
 		var em = createEntityManager();
 		var qProdcut = em.createNamedQuery("getAllProduct",Product.class);
 		var qCat =em.createNamedQuery("getAllCategory",Category.class);
-		//req.setAttribute("categories", qCat.getResultList());
-		//req.setAttribute("products", qProdcut.getResultList());
 		getServletContext().setAttribute("categories", qCat.getResultList());
 		getServletContext().setAttribute("products", qProdcut.getResultList());
 		getServletContext().getRequestDispatcher( req.getServletPath().concat(".jsp")).forward(req, resp);

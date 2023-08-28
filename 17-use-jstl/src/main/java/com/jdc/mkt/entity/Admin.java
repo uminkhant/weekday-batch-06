@@ -12,11 +12,13 @@ import lombok.Setter;
 public class Admin extends Member{
 
 	private static final long serialVersionUID = 1L;
-		
-	public Admin(String name, String loginId, String password) {
-		super(name, loginId, password);
+
+	public Admin(String name, String loginId, String password, String street, String township, String city) {
+		super(name, loginId, password, street, township, city);
 		setRole(Role.ADMIN);
 	}
+		
+	
 
 
 

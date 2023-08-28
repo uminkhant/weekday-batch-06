@@ -13,7 +13,7 @@
 <c:url var="details" value="/detailsCart" />
 <c:url var="index" value="/" />
 
-<nav class="navbar navbar-expand-lg ">
+<nav class="navbar navbar-expand-lg">
 	<div class="container-fluid">
 		<a class="navbar-brand " href="${index }">Product Sales</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"

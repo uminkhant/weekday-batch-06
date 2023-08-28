@@ -20,11 +20,15 @@ public class Customer extends Member{
 	@Column(name = "customer_type")
 	private CustomerType customerType;
 		
-	public Customer(String name, String loginId, String password) {
-		super(name, loginId, password);
+	
+	
+	public Customer(String name, String loginId, String password, String street, String township, String city) {
+		super(name, loginId, password, street, township, city);
 		setRole(Role.CUSTOMER);
 	}
-	
+
+
+
 	public enum CustomerType {
 		GOLD,SILVER,DIAMOND
 	}

@@ -32,7 +32,7 @@
 	<div class="container mt-4">
 		<div class="row">
 			<div class="col-md-8">
-				<h3 class="text-color">Voucher Detail</h3>
+				<h3 class="text-color">Voucher Details</h3>
 				<c:choose>
 					<c:when test="${not empty saleDetails }">
 						<table class="table table-striped">
@@ -107,7 +107,7 @@
 							</div>
 						</c:when>
 						<c:otherwise>
-							<p class="text-warning">There is no product in cart</p>
+							<p class="text-danger">There is no product in cart</p>
 						</c:otherwise>
 					</c:choose>
 				</form>

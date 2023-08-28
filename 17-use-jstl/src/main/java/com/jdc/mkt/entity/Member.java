@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.hibernate.annotations.NamedQuery;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
@@ -39,16 +40,17 @@ public class Member implements Serializable{
 	@Column(nullable = false,unique = true)
 	private String loginId;
 	private String password;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Address address;
-	@OneToMany(mappedBy = "member")
+	@OneToMany(mappedBy = "member",cascade = CascadeType.PERSIST)
 	private List<Contact> contacts = new ArrayList<Contact>();
 	
-	public Member(String name, String loginId, String password) {
+	public Member(String name, String loginId, String password,String street,String township,String city) {
 		super();
 		this.name = name;
 		this.loginId = loginId;
 		this.password = password;
+		this.address = new Address(street, township, city);
 		
 	}
 	public void addContact(Contact contact) {

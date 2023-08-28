@@ -77,9 +77,9 @@
 						<input class="form-control" type="text" name="category" placeholder="Category name" />
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-outline-secondary"
+						<button type="button" class="btn btn-outline-warning"
 							data-bs-dismiss="modal">Close</button>
-						<button type="submit" class="btn-style">Save</button>
+						<button type="submit" class="btn btn-outline-danger">Save</button>
 					</div>
 				</form>
 			</div>

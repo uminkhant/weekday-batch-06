@@ -57,7 +57,7 @@
 			</table>
 		</c:when>
 		<c:otherwise>
-			<p class="text-primary">There is no category yet !</p>
+			<p class="text-danger">There is no category yet !</p>
 		</c:otherwise>
 		</c:choose>
 			
