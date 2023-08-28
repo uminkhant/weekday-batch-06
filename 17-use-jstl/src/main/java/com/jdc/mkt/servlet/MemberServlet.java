@@ -21,13 +21,18 @@ public class MemberServlet extends FactoryServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		var em = createEntityManager();
-		var query = em.createNamedQuery("getAllMembers", Member.class);
-		
+		var query = em.createNamedQuery("getAllMembers", Member.class);	
 		req.setAttribute("memberRole", Role.values());
 		req.setAttribute("members", query.getResultList());
 		
+		if(req.getServletPath().equals("/admin/addMember")) {
+			getServletContext().getRequestDispatcher("/customer/register.jsp").forward(req, resp);
+		}else {
+			getServletContext().getRequestDispatcher("/admin/showMember.jsp").forward(req, resp);
+		}
+		
 		//getServletContext().getRequestDispatcher(req.getServletPath().concat(".jsp")).forward(req, resp);
-		getServletContext().getRequestDispatcher("/customer/register.jsp").forward(req, resp);
+		
 	}
 	
 	@Override
@@ -51,7 +56,7 @@ public class MemberServlet extends FactoryServlet{
 			em.persist(member);	
 		em.getTransaction().commit();
 		closeEntityManager();
-		
+		resp.sendRedirect("/index.jsp");
 	}
 
 }

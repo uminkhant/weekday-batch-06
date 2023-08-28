@@ -11,6 +11,7 @@
 <c:url var="addProduct" value="/admin/addProduct" />
 <c:url var="showProduct" value="/admin/showProduct" />
 <c:url var="details" value="/detailsCart" />
+<c:url var="login" value="/login"/>
 <c:url var="index" value="/" />
 
 <nav class="navbar navbar-expand-lg">
@@ -51,10 +52,22 @@
 			</ul>
 
 		</div>
-		<span class="d-flex text-color me-3"> <i
-			class="bi bi-person-fill"></i><a
-			class="nav-link  ${pageName eq 'Category' ? 'active' : '' }" href="">Login</a>
+		<c:set var="member" value="${ applicationScope.member}"></c:set>
+		<c:choose>
+			<c:when test="${not empty member }">
+				<span class="d-flex text-color me-3"> <i
+				class="bi bi-person-fill"></i><a
+				class="nav-link" href="${login }">${member.name }</a>
 		</span>
+			</c:when>
+			<c:otherwise>
+				<span class="d-flex text-color me-3"> <i
+				class="bi bi-person-fill"></i><a
+				class="nav-link" href="${login }">Login</a>
+		</span>
+			</c:otherwise>
+		</c:choose>
+		
 		<c:set var="saleDetails" value="${sessionScope.saleDetails }"></c:set>
 
 		<a href="${details }" class="nav-link"> <i
@@ -74,6 +87,36 @@
 		<i class="${icon }"></i> ${pageName }
 	</h3>
 
+
+<!-- modal -->
+
+	<%-- <div id="formLogin" class="modal fade" tabindex="-1">
+		<div class="modal-dialog">
+		<c:url var="add" value="/admin/addCategory"></c:url>
+			<div class="modal-content">
+				<form action="${ add }" method="post" >
+					<div class="modal-header">
+						<h5 class="modal-title">Login Form</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<input class="form-control" type="text" name="loginId" placeholder="type LoginId" />
+					</div>
+					<div class="modal-body">
+						<input class="form-control" type="text" name="password" placeholder="type password" />
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-outline-warning"
+							data-bs-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-outline-danger">Save</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<c:url var="modal" value="/styles/js/app.js"></c:url>
+	<script src="${modal }"></script> --%>
 </section>
 
 

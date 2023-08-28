@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 
-@WebServlet({"/admin/addProduct","/admin/showProduct"})
+@WebServlet({"/admin/addProduct","/admin/showProduct","/admin/detailProduct"})
 @MultipartConfig
 public class ProductServlet extends FactoryServlet{
 
@@ -24,6 +24,11 @@ public class ProductServlet extends FactoryServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
 		var em = createEntityManager();
+		if(req.getServletPath().equals("/admin/detailProduct")) {
+			var id = Integer.parseInt( req.getParameter("id"));
+			Product p = em.find(Product.class, id);
+			req.setAttribute("product", p);
+		}
 		var qProdcut = em.createNamedQuery("getAllProduct",Product.class);
 		var qCat =em.createNamedQuery("getAllCategory",Category.class);
 		getServletContext().setAttribute("categories", qCat.getResultList());
@@ -36,12 +41,11 @@ public class ProductServlet extends FactoryServlet{
 		var name = req.getParameter("name");
 		var cat_id = Integer.parseInt( req.getParameter("category"));
 		var dtPrice =  Integer.parseInt(req.getParameter("dtPrice"));
-		var wsPrice =  Integer.parseInt(req.getParameter("wsPrice"));
 		var desc = req.getParameter("desc");
 		var image = getImageName(req);
 		var em = createEntityManager();
 		var category = em.find(Category.class, cat_id);
-		var product = new Product(name, dtPrice, wsPrice, desc, image, category);
+		var product = new Product(name, dtPrice, desc, image, category);
 		
 		em.getTransaction().begin();
 		em.persist(product);

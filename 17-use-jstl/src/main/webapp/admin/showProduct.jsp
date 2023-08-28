@@ -47,9 +47,9 @@
 							<td>${p.name }</td>
 							<td>${p.category.name }</td>
 							<td class="text-end text-danger">${p.detailPrice }</td>
-							<td class="text-end text-danger">${p.wholeSalePrice }</td>
 							<td class="text-end">
-								<a id="" class="btn-style text-end"><i class="bi bi-plus"></i> Edit</a>
+								
+								<a href="/admin/detailProduct?id=${p.id }" class="btn-style text-end"><i class="bi bi-plus"></i> Edit</a>
 							</td>
 						</tr>
 					</c:forEach>

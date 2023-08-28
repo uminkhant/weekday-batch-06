@@ -1,13 +1,18 @@
 package com.jdc.mkt.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,21 +29,25 @@ public class Sale implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private Member customer;
-	private Member cashier;
-	private LocalDateTime saleDate;
+	private LocalDate saleDate;
+	private LocalTime saleTime;
 	private int total;
-	@OneToMany(mappedBy = "sale")
-	private List< SaleDetails> saleDetials;
+	
+	@OneToMany(mappedBy = "sale",cascade = CascadeType.PERSIST)
+	private List< SaleDetails> saleDetials = new ArrayList<SaleDetails>();
 	
 	
-	public Sale(Member customer, Member cashier, LocalDateTime saleDate, int total, List<SaleDetails> saleDetials) {
+	public Sale( LocalDate saleDate,LocalTime time, int total) {
 		super();
-		this.customer = customer;
-		this.cashier = cashier;
 		this.saleDate = saleDate;
+		this.saleTime = saleTime;
 		this.total = total;
-		this.saleDetials = saleDetials;
+		
 	}
 	
+	public void addSaleDetail(SaleDetails detail) {
+		detail.setSale(this);
+		this.saleDetials.add(detail);
+	}
 	
 }

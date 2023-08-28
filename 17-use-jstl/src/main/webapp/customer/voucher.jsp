@@ -28,11 +28,12 @@
 	<c:url var="clearCart" value="/clearCart" />
 
 	<app:header pageName="" icon=""></app:header>
+	<c:url var="sale" value="/sale"></c:url>
 	<c:set var="saleDetails" value="${sessionScope.saleDetails }"/>
 	<div class="container mt-4">
 		<div class="row">
 			<div class="col-md-8">
-				<h3 class="text-color">Voucher Details</h3>
+				<h3 class="text-color"><i class="bi bi-bag-check"></i> Voucher Details</h3>
 				<c:choose>
 					<c:when test="${not empty saleDetails }">
 						<table class="table table-striped">
@@ -62,8 +63,8 @@
 				</c:choose>
 			</div>
 			<div class="col-md-4">
-				<h3 class="text-color">Voucher</h3>
-				<form action="" class="form">
+				<h3 class="text-color"><i class="bi bi-cart-fill"></i> Voucher</h3>
+				<form action="${sale }" class="form" method="post">
 					<c:choose>
 						<c:when test="${not empty saleDetails }">
 							<table class="table table-striped">
@@ -103,7 +104,7 @@
 							<div class="text-end">
 								<a class="btn btn-outline-warning" href="${clearCart }">Clear
 									Cart</a>
-								<button type="submit" class="btn btn-outline-danger">Checkout</button>
+								<button type="submit" class="btn btn-outline-danger">Cash</button>
 							</div>
 						</c:when>
 						<c:otherwise>

@@ -7,3 +7,13 @@ const modal = document.getElementById('modal')
 		})
 		
 		
+		
+const login = document.getElementById('login')
+const formLogin = document.getElementById('formLogin')
+		
+		login.addEventListener('click', () => {
+			const dialog = new bootstrap.Modal(formLogin)
+			dialog.show()
+		})
+		
+		

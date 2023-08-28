@@ -31,8 +31,6 @@ public class Product implements Serializable{
 	private String name;
 	@Column(name="dt_price")
 	private int detailPrice;
-	@Column(name="ws_price")
-	private int wholeSalePrice;
 	private String description;
 	@Column(columnDefinition = "varchar(45) not null default 'noImage.png'")
 	private String image;
@@ -42,13 +40,11 @@ public class Product implements Serializable{
 	private List<SaleDetails> saleDetails;
 	
 	
-	public Product(String name, int detailPrice,
-			int wholeSalePrice, String description, String image,
+	public Product(String name, int detailPrice, String description, String image,
 			Category category) {
 		super();
 		this.name = name;
 		this.detailPrice = detailPrice;
-		this.wholeSalePrice = wholeSalePrice;
 		this.description = description;
 		this.image = image;
 		this.category = category;

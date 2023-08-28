@@ -22,68 +22,75 @@
 </head>
 <body>
 	<c:url var="addMember" value="/admin/addMember"></c:url>
-	<app:header pageName="Register" icon="bi bi-bookmark-plus-fill"></app:header>
+	<app:header pageName="Registering Form" icon="bi bi-file-earmark-person"></app:header>
 
 	<div class="container mt-4 p-4">
-		<form action="${addMember }" class="form" method="post">
-			<div class="row text-center">
-				<div class="card col-sm-6">
-					<div class="card-header">Member Detail</div>
-					<div class="card body p-2 mb-2">
-						<div class="form-group mb-2 text-start">
-							<label for="name" class="form-label text-color ">Name </label> <input
-								id="name" type="text" class="form-control" name="name" />
-						</div>
+		
+			
+				<form action="${addMember }" class="form" method="post">
+					<div class="row  ">
 
-						<div class="form-group mb-2 text-start">
-							<label for="dt" class="form-label text-color">LoginId</label> <input
-								id="dt" type="text" class="form-control" name="loginId" />
+						<div class="card col-sm-6 p-2">
+							<div class="card-title text-secondary">Member Information</div>
+							<div class="card-body p-2 mb-2">
+								<div class="form-group mb-2 text-start">
+									<label for="name" class="form-label text-color ">Name </label>
+									<input id="name" type="text" class="form-control" name="name" />
+								</div>
+
+								<div class="form-group mb-2 text-start">
+									<label for="dt" class="form-label text-color">LoginId</label> <input
+										id="dt" type="text" class="form-control" name="loginId" />
+								</div>
+								<div class="form-group mb-2 text-start">
+									<label for="ws" class="form-label text-color">Password</label>
+									<input id="ws" type="password" class="form-control"
+										name="password" />
+								</div>
+								<div class="form-group mb-2 text-start">
+									<label for="ws" class="form-label text-color">Confirm
+										Password</label> <input id="ws" type="password" class="form-control"
+										name="confirm" />
+								</div>
+							</div>
 						</div>
-						<div class="form-group mb-2 text-start">
-							<label for="ws" class="form-label text-color">Password</label> <input
-								id="ws" type="password" class="form-control" name="password" />
-						</div>
-						<div class="form-group mb-2 text-start">
-							<label for="ws" class="form-label text-color">Confirm
-								Password</label> <input id="ws" type="password" class="form-control"
-								name="confirm" />
+						
+						<div class="card col-sm-6 p-2">
+							<div class="card-title text-secondary">Contact Infomation
+								must be fill !</div>
+							<div class="card-body p-2 mb-2">
+								<div class="form-group mb-2 text-start">
+									<label for="city" class="form-label text-color ">City </label>
+									<input id="city" type="text" class="form-control" name="city" />
+								</div>
+
+								<div class="form-group mb-2 text-start">
+									<label for="township" class="form-label text-color">Township</label>
+									<input id="township" type="text" class="form-control"
+										name="township" />
+								</div>
+								<div class="form-group mb-2 text-start">
+									<label for="street" class="form-label text-color">Address</label>
+									<input id="street" type="text-area" class="form-control"
+										name="street" />
+								</div>
+								<div class="form-group mb-2 text-start">
+									<label for="phone" class="form-label text-color">Phone</label>
+									<input id="phone" type="text" class="form-control" name="phone" />
+								</div>
+							</div>
+
 						</div>
 					</div>
-				</div>
-				
-				<div class="card col-sm-6">
-					<div class="card-header">Other Info</div>
-					<div class="card-body p-2 mb-2">
-						<div class="form-group mb-2 text-start">
-							<label for="city" class="form-label text-color ">City </label> <input
-								id="city" type="text" class="form-control" name="city" />
-						</div>
 
-						<div class="form-group mb-2 text-start">
-							<label for="township" class="form-label text-color">Township</label>
-							<input id="township" type="text" class="form-control"
-								name="township" />
-						</div>
-						<div class="form-group mb-2 text-start">
-							<label for="street" class="form-label text-color">Address</label>
-							<input id="street" type="text-area" class="form-control"
-								name="street" />
-						</div>
-						<div class="form-group mb-2 text-start">
-							<label for="phone" class="form-label text-color">Phone</label> <input
-								id="phone" type="text" class="form-control" name="phone" />
-						</div>
+					<div class="text-end ">
+						<button class="btn btn-outline-warning mt-2">Clear</button>
+						<button type="submit" class="btn btn-outline-danger mt-2">Save</button>
 					</div>
-
-				</div>
+				</form>
 			</div>
-
-			<div class="text-end ">
-				<button class="btn btn-outline-warning mt-2">Clear</button>
-				<button type="submit" class="btn btn-outline-danger mt-2">Save</button>
-			</div>
-		</form>
-	</div>
+		
+	
 
 	<app:footer></app:footer>
 </body>
