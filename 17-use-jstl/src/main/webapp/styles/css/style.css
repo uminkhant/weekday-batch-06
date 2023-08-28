@@ -1,20 +1,34 @@
-
-.text-color{
+.text-color {
 	color: darkorange;
-	
+
 }
 
-.btn-style{
+.btn-style {
 	background-color: none;
 	border: 1px solid darkorange;
-	color:darkorange;
+	color: darkorange;
 	text-decoration: none;
 	padding: 8px;
 	border-radius: 5px;
 }
 
-.btn-style:hover{
+.btn-style:hover {
 	background-color: darkorange;
-	border:  white;
-	color:white;
+	border: white;
+	color: white;
+}
+
+.img-style {
+	margin: 5px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 5px;
+	width: 50%;
+	height: 50px;
+}
+
+.card-img-top {
+    width: 50%;
+    height: 10vw;
+    object-fit: cover;
 }

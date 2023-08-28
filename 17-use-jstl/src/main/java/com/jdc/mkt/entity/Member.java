@@ -1,9 +1,13 @@
 package com.jdc.mkt.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.NamedQuery;
+
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -20,6 +24,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@DiscriminatorColumn(name = "member_type")
+@NamedQuery(name = "getAllMembers",query = "select m from Member m join m.contacts")
 public class Member implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -36,22 +42,22 @@ public class Member implements Serializable{
 	@ManyToOne
 	private Address address;
 	@OneToMany(mappedBy = "member")
-	private List<Contact> contacts;
+	private List<Contact> contacts = new ArrayList<Contact>();
 	
-	
-	
-	public Member(String name, String loginId, String password, Address address, List<Contact> contacts) {
+	public Member(String name, String loginId, String password) {
 		super();
 		this.name = name;
 		this.loginId = loginId;
 		this.password = password;
-		this.address = address;
-		this.contacts = contacts;
+		
+	}
+	public void addContact(Contact contact) {
+		contact.setMember(this);
+		this.contacts.add(contact);
 	}
 
 
-
 	public enum Role{
-		AMDIN,CASHIER,CUSTOMER
+		ADMIN,CUSTOMER
 	}
 }

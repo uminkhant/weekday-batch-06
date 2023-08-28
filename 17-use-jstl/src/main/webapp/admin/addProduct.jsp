@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="styles/css/style.css" />
+<link rel="stylesheet" href="/styles/css/style.css" />
 <title></title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -21,20 +21,20 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<c:url var="addProduct" value="/addProduct"></c:url>
+	<c:url var="addProduct" value="/admin/addProduct"></c:url>
 	<app:header pageName="Add Product" icon="bi bi-bookmark-plus-fill"></app:header>
 
 	<div class="container mt-4 p-4 text-center w-50">
 		<form action="${addProduct }" class="form" method="post"
 			enctype="multipart/form-data">
-			<div class="form-group mb-2">
+			<div class="form-group mb-2 text-start">
 				<label for="name" class="form-label text-color">Name </label> <input id="name"
 					type="text" class="form-control" name="name" />
 			</div>
-			<div class="form-group mb-2">
+			<div class="form-group mb-2 text-start">
 				<label for="cat" class="form-label text-color">Category </label>
 				<select class="form-select" name="category" id="cat">
-					<c:forEach var="c" items="${requestScope.categories }">
+					<c:forEach var="c" items="${applicationScope.categories }">
 						<option value="${c.id}">${c.name }</option>
 					</c:forEach> 
 				
@@ -59,7 +59,7 @@
 			</div>
 			<div class="text-end ">
 			<button class="btn btn-outline-warning mt-2">Clear</button>
-				<button type="submit" class="btn btn-outline-primary mt-2">Save</button>
+				<button type="submit" class="btn btn-outline-danger mt-2">Save</button>
 			</div>
 		</form>
 	</div>

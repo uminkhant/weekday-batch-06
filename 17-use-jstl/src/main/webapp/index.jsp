@@ -30,7 +30,7 @@
 					<c:forEach var="p" items="${list }">
 						<div class="col-sm-3 p-2">
 							<div class="card">
-								<img src="images/${p.image}" class="card-img-top p-3" alt="..." >
+								<img src="images/${p.image}" class="card-img-top p-4 w-100" height="300px" alt="..." >
 								<div class="card-body">
 									<h5 class="card-title">${p.name }</h5>
 									<p class="card-text">${p.description }</p>
@@ -39,7 +39,6 @@
 										<c:url var="cart" value="/addToCart?id=${p.id }"></c:url> 
 										<a href="${cart }" class="btn-style">Add To Cart</a>
 									</div>
-
 								</div>
 							</div>
 						</div>

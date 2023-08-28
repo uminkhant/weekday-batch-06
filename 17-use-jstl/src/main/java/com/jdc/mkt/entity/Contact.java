@@ -24,4 +24,5 @@ public class Contact implements Serializable{
 	private String phone;
 	@ManyToOne
 	private Member member;
+	
 }

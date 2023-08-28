@@ -28,14 +28,14 @@
 			<a id="addNewBtn" class="btn-style me-2"><i class="bi bi-plus"></i> Add New</a>
 		</div>
 		<div>
-		<c:set var="list" value="${requestScope.categories }"></c:set>
+		<c:set var="list" value="${applicationScope.categories }"></c:set>
 		<c:choose>
 		<c:when test="${ not empty list }">
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>No.</th>
-						<th>Name</th>
+						<th class="text-color">No.</th>
+						<th class="text-color">Name</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -65,7 +65,7 @@
 
 	<div id="modal" class="modal fade" tabindex="-1">
 		<div class="modal-dialog">
-		<c:url var="add" value="/addCategory"></c:url>
+		<c:url var="add" value="/admin/addCategory"></c:url>
 			<div class="modal-content">
 				<form action="${ add }" method="post" >
 					<div class="modal-header">

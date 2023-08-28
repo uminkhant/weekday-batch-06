@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 
-@WebServlet({"/addProduct","/showProduct"})
+@WebServlet({"/admin/addProduct","/admin/showProduct"})
 @MultipartConfig
 public class ProductServlet extends FactoryServlet{
 
@@ -26,8 +26,10 @@ public class ProductServlet extends FactoryServlet{
 		var em = createEntityManager();
 		var qProdcut = em.createNamedQuery("getAllProduct",Product.class);
 		var qCat =em.createNamedQuery("getAllCategory",Category.class);
-		req.setAttribute("categories", qCat.getResultList());
-		req.setAttribute("products", qProdcut.getResultList());
+		//req.setAttribute("categories", qCat.getResultList());
+		//req.setAttribute("products", qProdcut.getResultList());
+		getServletContext().setAttribute("categories", qCat.getResultList());
+		getServletContext().setAttribute("products", qProdcut.getResultList());
 		getServletContext().getRequestDispatcher( req.getServletPath().concat(".jsp")).forward(req, resp);
 	}
 	
@@ -47,7 +49,7 @@ public class ProductServlet extends FactoryServlet{
 		em.persist(product);
 		em.getTransaction().commit();
 		closeEntityManager();
-		resp.sendRedirect("/showProduct");
+		resp.sendRedirect("/admin/showProduct");
 		
 	}
 

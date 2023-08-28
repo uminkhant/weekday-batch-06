@@ -4,9 +4,12 @@ insert into address(street,township,city) values('19st,Between 80x81 sts','Aungm
 insert into address(street,township,city) values('Between 35x36 sts,Between 84x85 sts','Maharaungmyay','Mandalay');
 insert into address(street,township,city) values('41st,Between 75x76 sts ','Maharaungmyay','Mandalay');
 
-insert into member(name,loginId,password,role,address_id) values('William','william','123',1,1);
-insert into member(name,loginId,password,role,address_id) values('Andrew','andrew','111',2,2);
-insert into member(name,loginId,password,role,address_id) values('Sopheia','sopheia','222',3,3);
+insert into member(name,member_type,loginId,password,customer_type,role,address_id) values('William','customer','william','123',1,1,1);
+insert into member(name,member_type,loginId,password,customer_type,role,address_id) values('Andrew','customer','andrew','111',2,2,2);
+insert into member(name,member_type,loginId,password,customer_type,role,address_id) values('John','customer','john','222',3,2,3);
+insert into member(name,member_type,loginId,password,customer_type,role,address_id) values('Sopheia','customer','sopheia','456',3,2,4);
+insert into member(name,member_type,loginId,password,customer_type,role,address_id) values('Susan','customer','susan','444',2,2,5);
+
 
 insert into contact(member_id,phone) values(1,'09232423232');
 insert into contact(member_id,phone) values(1,'09923223242');

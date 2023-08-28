@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="styles/css/style.css" />
+<link rel="stylesheet" href="/styles/css/style.css" />
 <title></title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -21,7 +21,7 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<c:url var="addMember" value="/addMember"></c:url>
+	<c:url var="addMember" value="/admin/addMember"></c:url>
 	<app:header pageName="Add Member" icon="bi bi-bookmark-plus-fill"></app:header>
 
 	<div class="container mt-4 p-4 text-center w-50">
@@ -55,7 +55,7 @@
 
 			<div class="text-end ">
 			<button class="btn btn-outline-warning mt-2">Clear</button>
-				<button type="submit" class="btn btn-outline-primary mt-2">Save</button>
+				<button type="submit" class="btn btn-outline-danger mt-2">Save</button>
 			</div>
 		</form>
 	</div>

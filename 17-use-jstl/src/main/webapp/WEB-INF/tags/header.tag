@@ -1,13 +1,16 @@
+<%@tag import="com.jdc.mkt.entity.SaleDetails"%>
+<%@tag import="java.util.List"%>
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ attribute name="pageName" required="true"%>
 <%@ attribute name="icon" required="true"%>
 
-<c:url var="addMember" value="/addMember" />
-<c:url var="showMember" value="/showMember" />
-<c:url var="category" value="/category" />
-<c:url var="addProduct" value="/addProduct" />
-<c:url var="showProduct" value="/showProduct" />
+<c:url var="addMember" value="/admin/addMember" />
+<c:url var="showMember" value="/admin/showMember" />
+<c:url var="category" value="/admin/category" />
+<c:url var="addProduct" value="/admin/addProduct" />
+<c:url var="showProduct" value="/admin/showProduct" />
+<c:url var="details" value="/detailsCart" />
 <c:url var="index" value="/" />
 
 <nav class="navbar navbar-expand-lg ">
@@ -48,13 +51,18 @@
 			</ul>
 
 		</div>
+		<span class="d-flex text-color me-3"> <i
+			class="bi bi-person-fill"></i><a
+			class="nav-link  ${pageName eq 'Category' ? 'active' : '' }" href="">Login</a>
+		</span>
 		<c:set var="saleDetails" value="${sessionScope.saleDetails }"></c:set>
-		<c:url var="details" value="/detailsCart"></c:url>
+
 		<a href="${details }" class="nav-link"> <i
-			class="bi bi-cart-fill text-danger position-relative me-4"> Cart
-				<c:if test="${not empty saleDetails }">
+			class="bi bi-cart-fill text-color position-relative me-4"> Cart <c:if
+					test="${ not empty saleDetails }">
+
 					<span
-						class="position-absolute top-0 start-80 translate-middle badge rounded-pill bg-danger">
+						class="position-absolute top-25 start-50 translate-middle badge rounded-pill bg-danger">
 						${saleDetails.size()} </span>
 				</c:if>
 		</i></a>

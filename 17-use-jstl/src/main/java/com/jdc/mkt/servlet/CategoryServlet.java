@@ -10,7 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet({"/category","/addCategory"})
+@WebServlet({"/admin/addCategory","/admin/category"})
 public class CategoryServlet extends FactoryServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -19,9 +19,9 @@ public class CategoryServlet extends FactoryServlet {
 		
 		var em = createEntityManager();
 		var query = em.createNamedQuery("getAllCategory", Category.class);
-		req.setAttribute("categories", query.getResultList());
+		getServletContext().setAttribute("categories", query.getResultList());
 		closeEntityManager();
-		getServletContext().getRequestDispatcher("/category.jsp").forward(req, resp);
+		getServletContext().getRequestDispatcher("/admin/category.jsp").forward(req, resp);
 	}
 	
 	@Override
@@ -32,6 +32,6 @@ public class CategoryServlet extends FactoryServlet {
 		em.persist( new Category(name));
 		em.getTransaction().commit();
 		closeEntityManager();
-		resp.sendRedirect("/category");
+		resp.sendRedirect("/admin/category");
 	}
 }

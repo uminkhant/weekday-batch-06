@@ -26,17 +26,17 @@
 	<app:header pageName="Product" icon="bi bi-tag-fill"></app:header>
 	
 	<div class="container mt-4 p-4">
-		<c:set var="list" value="${requestScope.products }"></c:set>
+		<c:set var="list" value="${applicationScope.products }"></c:set>
 		<c:choose>
 		<c:when test="${ not empty list }">
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>No.</th>
-						<th>Name</th>
-						<th>Category</th>
-						<th class="text-end">Detail Price</th>
-						<th class="text-end">WholeSale Price</th>
+						<th class="text-color">No.</th>
+						<th class="text-color">Name</th>
+						<th class="text-color">Category</th>
+						<th class="text-end text-color">Detail Price</th>
+						<th class="text-end text-color">WholeSale Price</th>
 						<th></th>
 					</tr>
 				</thead>

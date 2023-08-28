@@ -30,6 +30,7 @@ public class Sale implements Serializable{
 	@OneToMany(mappedBy = "sale")
 	private List< SaleDetails> saleDetials;
 	
+	
 	public Sale(Member customer, Member cashier, LocalDateTime saleDate, int total, List<SaleDetails> saleDetials) {
 		super();
 		this.customer = customer;

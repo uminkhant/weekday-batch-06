@@ -27,6 +27,7 @@ public class SaleDetails implements Serializable{
 	@ManyToOne
 	private Sale  sale;
 	private int total;
+	
 		
 	public SaleDetails(int qty, Product product) {
 		super();

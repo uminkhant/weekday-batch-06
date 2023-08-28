@@ -18,9 +18,9 @@ public class ApplicationListener implements ServletContextListener{
 		emf = Persistence.createEntityManagerFactory("use-jstl");
 		sce.getServletContext().setAttribute("emf", emf);
 		
-		var em = emf.createEntityManager();
-		
+		var em = emf.createEntityManager();	
 		var qCategory = em.createNamedQuery("getAllCategory", Category.class);
+		
 		sce.getServletContext().setAttribute("categories",qCategory.getResultList());
 		
 		var qProduct = em.createNamedQuery("getAllProduct",Product.class);
