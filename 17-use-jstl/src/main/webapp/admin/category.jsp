@@ -22,59 +22,62 @@
 
 </head>
 <body>
-	<app:header pageName="Category" icon="bi bi-tags-fill"></app:header>
+	<app:header pageName="Category"></app:header>
 	<div class="container mt-4 p-4 w-75">
+		<h3 class="text-color"><i class="bi bi-tags-fill"></i>Category</h3>
 		<div class="text-end">
-			<a id="addNewBtn" class="btn-style me-2"><i class="bi bi-plus"></i> Add New</a>
+			<a id="addNewBtn" class="btn-style me-2"><i class="bi bi-plus"></i>
+				Add New</a>
 		</div>
 		<div>
-		<c:set var="list" value="${applicationScope.categories }"></c:set>
-		<c:choose>
-		<c:when test="${ not empty list }">
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th class="text-color">No.</th>
-						<th class="text-color">Name</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="c" items="${list }" varStatus="count"  >
-						<tr>
-							<td>${count.index+1 }</td>
-							<td>${c.name }</td>
-							<td class="text-end">
-								<a id="" class="editBtn btn-style text-end"><i class="bi bi-plus"></i> Edit</a>
-							</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</c:when>
-		<c:otherwise>
-			<p class="text-primary">There is no category yet !</p>
-		</c:otherwise>
-		</c:choose>
-			
+			<c:set var="list" value="${applicationScope.categories }"></c:set>
+			<c:choose>
+				<c:when test="${ not empty list }">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th class="text-color">No.</th>
+								<th class="text-color">Name</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="c" items="${list }" varStatus="count">
+								<tr>
+									<td>${count.index+1 }</td>
+									<td>${c.name }</td>
+									<td class="text-end"><a id="edit"
+										class="editBtn btn-style text-end"><i class="bi bi-plus"></i>
+											Edit</a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</c:when>
+				<c:otherwise>
+					<p class="text-primary">There is no category yet !</p>
+				</c:otherwise>
+			</c:choose>
+
 		</div>
 	</div>
 	<app:footer></app:footer>
 
-<!-- modal -->
+	<!-- modal -->
 
 	<div id="modal" class="modal fade" tabindex="-1">
 		<div class="modal-dialog">
-		<c:url var="add" value="/admin/addCategory"></c:url>
+			<c:url var="add" value="/admin/addCategory"></c:url>
 			<div class="modal-content">
-				<form action="${ add }" method="post" >
+				<form action="${ add }" method="post">
 					<div class="modal-header">
 						<h5 class="modal-title">Add Category</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
-						<input class="form-control" type="text" name="category" placeholder="Category name" />
+						<input class="form-control" type="text" name="category"
+							placeholder="Category name" />
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-outline-warning"
@@ -85,8 +88,16 @@
 			</div>
 		</div>
 	</div>
-	<c:url var="modal" value="/styles/js/app.js"></c:url>
-	<script src="${modal }"></script>
+	<script>
+	const myModal = document.getElementById('addNewBtn')
+	const modal = document.getElementById('modal')
+
+	myModal.addEventListener('click', () => {
+		const dialog = new bootstrap.Modal(modal)
+		dialog.show()
+	})
+
+	</script>
 </body>
 
 </html>

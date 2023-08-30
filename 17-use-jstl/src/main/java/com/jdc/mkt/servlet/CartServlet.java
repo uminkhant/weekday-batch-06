@@ -46,16 +46,20 @@ public class CartServlet extends FactoryServlet {
 			resp.sendRedirect("/index.jsp");
 			break;
 		case "/clearCart":
-			if (null != list && !list.isEmpty()) {
-				list.clear();
-			}
+			cartClear(list);
 			resp.sendRedirect("/index.jsp");
 			break;
 		case "/detailsCart":
-			resp.sendRedirect("/customer/voucher.jsp");
+			resp.sendRedirect("/detailsCart.jsp");
 			break;
 		}
 
+	}
+	
+	private void cartClear(List<SaleDetails> list) {
+		if (null != list && !list.isEmpty()) {
+			list.clear();
+		}
 	}
 
 	private boolean checkAndIncreaseQty(int id) {

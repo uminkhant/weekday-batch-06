@@ -20,23 +20,28 @@
 	integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
 	crossorigin="anonymous"></script>
 </head>
-<body>	
-	<app:header pageName="Welcome" icon="bi bi-house"></app:header>
+<body>
+	<app:header pageName="Welcome"></app:header>
 	<div class="container mt-4">
 		<div class="row">
 			<c:set var="list" value="${applicationScope.products }"></c:set>
 			<c:choose>
 				<c:when test="${not empty list }">
 					<c:forEach var="p" items="${list }">
-						<div class="col-sm-3 p-2">
+						<div class="col-md-3 p-2">
 							<div class="card p-2">
-								<img src="images/${p.image}" class="card-img-top p-4"  alt="..." >
+								<img src="images/${p.image}" class="p-2" height="260vh"
+									alt="...">
 								<div class="card-body">
 									<h5 class="card-title text-color">${p.name }</h5>
-									<p class="card-text">${p.description }</p>
+									<p class="card-text">
+										<span class="d-inline-block text-truncate"
+											style="max-width: 150px;"> ${p.description }</span>
+									</p>
 									<div>
-										<a href="#" class="btn-style">Details</a>
-										<c:url var="cart" value="/addToCart?id=${p.id }"></c:url> 
+										<c:url var="detailProduct" value="/detailProduct?id=${p.id }" />
+										<a href="${detailProduct }" class="btn-style">Details</a>
+										<c:url var="cart" value="/addToCart?id=${p.id }"></c:url>
 										<a href="${cart }" class="btn-style">Add To Cart</a>
 									</div>
 								</div>
@@ -51,4 +56,5 @@
 		</div>
 	</div>
 	<app:footer></app:footer>
+
 </body>

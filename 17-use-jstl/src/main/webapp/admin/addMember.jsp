@@ -22,9 +22,10 @@
 </head>
 <body>
 	<c:url var="addMember" value="/admin/addMember"></c:url>
-	<app:header pageName="Add Member" icon="bi bi-bookmark-plus-fill"></app:header>
+	<app:header pageName="Member" icon="bi bi-bookmark-plus-fill"></app:header>
 
 	<div class="container mt-4 p-4 text-center w-50">
+		<h3 class="text-color"><i class="bi bi-bookmark-plus-fill"></i>Add Member</h3>
 		<form action="${addMember }" class="form" method="post"
 			enctype="multipart/form-data">
 			<div class="form-group mb-2 text-start">
@@ -60,4 +61,5 @@
 		</form>
 	</div>
 	<app:footer></app:footer>
+	
 </body>

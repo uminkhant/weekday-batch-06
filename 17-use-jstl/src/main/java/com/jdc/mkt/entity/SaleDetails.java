@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,6 +16,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @NoArgsConstructor
+@NamedQuery(name = "getAllSaleDetails",query = "select sd from SaleDetails sd")
 public class SaleDetails implements Serializable{
 
 	private static final long serialVersionUID = 1L;

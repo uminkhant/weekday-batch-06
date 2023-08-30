@@ -2,7 +2,6 @@ package com.jdc.mkt.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,19 +27,20 @@ public class Sale implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@ManyToOne
 	private Member customer;
 	private LocalDate saleDate;
 	private LocalTime saleTime;
 	private int total;
-	
 	@OneToMany(mappedBy = "sale",cascade = CascadeType.PERSIST)
 	private List< SaleDetails> saleDetials = new ArrayList<SaleDetails>();
 	
 	
-	public Sale( LocalDate saleDate,LocalTime time, int total) {
+	public Sale(Member customer ,LocalDate saleDate,LocalTime time, int total) {
 		super();
 		this.saleDate = saleDate;
-		this.saleTime = saleTime;
+		this.saleTime = time;
+		this.customer = customer;
 		this.total = total;
 		
 	}

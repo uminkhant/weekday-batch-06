@@ -26,14 +26,16 @@
 </head>
 <body>
 	<c:url var="clearCart" value="/clearCart" />
-
-	<app:header pageName="" icon=""></app:header>
 	<c:url var="sale" value="/sale"></c:url>
-	<c:set var="saleDetails" value="${sessionScope.saleDetails }"/>
+
+	<app:header pageName=""></app:header>
+	<c:set var="saleDetails" value="${sessionScope.saleDetails }" />
 	<div class="container mt-4">
 		<div class="row">
 			<div class="col-md-8">
-				<h3 class="text-color"><i class="bi bi-bag-check"></i> Voucher Details</h3>
+				<h3 class="text-color">
+					<i class="bi bi-bag-check"></i> Voucher Details
+				</h3>
 				<c:choose>
 					<c:when test="${not empty saleDetails }">
 						<table class="table table-striped">
@@ -63,7 +65,9 @@
 				</c:choose>
 			</div>
 			<div class="col-md-4">
-				<h3 class="text-color"><i class="bi bi-cart-fill"></i> Voucher</h3>
+				<h3 class="text-color">
+					<i class="bi bi-cart-fill"></i> Voucher
+				</h3>
 				<form action="${sale }" class="form" method="post">
 					<c:choose>
 						<c:when test="${not empty saleDetails }">
@@ -92,10 +96,10 @@
 									<tr>
 										<td colspan="4">Totals</td>
 										<%
-											@SuppressWarnings("unchecked")
-											List<SaleDetails> list = (List<SaleDetails>)session.getAttribute("saleDetails");
-											int total = list.stream().mapToInt(sd -> sd.getQty()*sd.getProduct().getDetailPrice()).sum();
-											request.setAttribute("total", total);
+										@SuppressWarnings("unchecked")
+										List<SaleDetails> list = (List<SaleDetails>) session.getAttribute("saleDetails");
+										int total = list.stream().mapToInt(sd -> sd.getQty() * sd.getProduct().getDetailPrice()).sum();
+										request.setAttribute("total", total);
 										%>
 										<td class="text-danger">${total}</td>
 									</tr>

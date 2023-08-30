@@ -13,7 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet({"/admin/addMember","/admin/showMember"})
+@WebServlet({"/signUp","/admin/showMember"})
 public class MemberServlet extends FactoryServlet{
 
 	private static final long serialVersionUID = 1L;
@@ -25,14 +25,11 @@ public class MemberServlet extends FactoryServlet{
 		req.setAttribute("memberRole", Role.values());
 		req.setAttribute("members", query.getResultList());
 		
-		if(req.getServletPath().equals("/admin/addMember")) {
-			getServletContext().getRequestDispatcher("/customer/register.jsp").forward(req, resp);
+		if(req.getServletPath().equals("/signUp")) {
+			getServletContext().getRequestDispatcher("/signUp.jsp").forward(req, resp);
 		}else {
 			getServletContext().getRequestDispatcher("/admin/showMember.jsp").forward(req, resp);
-		}
-		
-		//getServletContext().getRequestDispatcher(req.getServletPath().concat(".jsp")).forward(req, resp);
-		
+		}		
 	}
 	
 	@Override

@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/styles/css/style.css" />
-<title></title>
+<title>Show member</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -21,52 +21,56 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<app:header pageName="Show Member" icon="bi bi-person-fill"></app:header>
+	<app:header pageName="Member"></app:header>
 
 	<div class="container mt-4">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th class="text-color">No</th>
-					<th class="text-color">Name</th>
-					<th class="text-color">Login Id</th>
-					<th class="text-color">Password</th>
-					<th class="text-color">Member Type</th>
-					<th class="text-color">City</th>
-					<th class="text-color">Township</th>
-					<th class="text-color">Street</th>					
-					<th class="text-color">Phone</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:set var="list" value="${requestScope.members }"></c:set>
-				<c:choose>
-					<c:when test="${not empty list }">
-						<c:forEach var="m" items="${list }" varStatus="c">
-							<tr>
-								<td>${c.index+1 }</td>
-								<td>${m.name }</td>
-								<td>${m.loginId }</td>
-								<td>${m.password }</td>
-								<td>${m.role }</td>
-								<td>${m.address.city }</td>
-								<td>${m.address.township }</td>
-								<td>${m.address.street }</td>
-															
-								<td>
-								<c:forEach var="p" items="${m.contacts }">
-									<p>${p.phone }</p>
-								</c:forEach>
-								</td>
-							</tr>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<p class="text-danger">There is no member !</p>
-					</c:otherwise>
-				</c:choose>
-			</tbody>
-		</table>
+		<h3 class="text-color">
+			<i class="bi bi-person-fill"></i>Show Person
+		</h3>
+		<div class="table-responsive">
+			<table class="table table-hover ">
+				<thead>
+					<tr>
+						<th class="text-color">No</th>
+						<th class="text-color">Name</th>
+						<th class="text-color ">Login Id</th>
+						<th class="text-color">Password</th>
+						<th class="text-color">Member Type</th>
+						<th class="text-color">City</th>
+						<th class="text-color">Township</th>
+						<th class="text-color">Street</th>
+						<th class="text-color">Phone</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:set var="list" value="${requestScope.members }"></c:set>
+					<c:choose>
+						<c:when test="${not empty list }">
+							<c:forEach var="m" items="${list }" varStatus="c">
+								<tr>
+									<td>${c.index+1 }</td>
+									<td>${m.name }</td>
+									<td>${m.loginId }</td>
+									<td>${m.password }</td>
+									<td>${m.role }</td>
+									<td>${m.address.city }</td>
+									<td>${m.address.township }</td>
+									<td>${m.address.street }</td>
+
+									<td><c:forEach var="p" items="${m.contacts }">
+											<p>${p.phone }</p>
+										</c:forEach></td>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<p class="text-danger">There is no member !</p>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
+		</div>
 	</div>
 	<app:footer></app:footer>
+
 </body>

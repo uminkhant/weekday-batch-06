@@ -11,16 +11,21 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/login")
+@WebServlet({ "/signIn", "/logout" })
 public class LoginServlet extends FactoryServlet {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("/login.jsp").forward(req, resp);
+
+		if (req.getServletPath().equals("/logout")) {
+			getServletContext().setAttribute("member", null);
+		}
+		getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,15 +34,19 @@ public class LoginServlet extends FactoryServlet {
 		var em = createEntityManager();
 		var query = em.createQuery("select m from Member m where m.loginId = :loginId");
 		query.setParameter("loginId", loginId);
-		var members =(List<Member>) query.getResultList();
-		
-		if(null != members) {
-			if(members.get(0).getPassword().equals(password)) {
-				getServletContext().setAttribute("member", members.get(0));
-				getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+		var members = (List<Member>) query.getResultList();
+
+		if (null != members) {
+			var member = members.get(0);
+			if (member.getPassword().equals(password)) {
+				getServletContext().setAttribute("member", member);
+
 			}else {
-				getServletContext().getRequestDispatcher("/login").forward(req, resp);
+				req.setAttribute("message", "Something wrong and try again !");
+				
 			}
+			getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+
 		}
 	}
 

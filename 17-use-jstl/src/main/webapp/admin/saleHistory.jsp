@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/styles/css/style.css" />
-<title>Home</title>
+<title>Sale History</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -23,13 +23,13 @@
 </head>
 <body>
 
-	<app:header pageName="Product"></app:header>
+	<app:header pageName="Sale"></app:header>
 
 	<div class="container mt-4 p-4">
 		<h3 class="text-color">
-			<i class="bi bi-tag-fill"></i>Show Product
+			<i class="bi bi-tag-fill"></i>Sale History
 		</h3>
-		<c:set var="list" value="${applicationScope.products }"></c:set>
+		<c:set var="list" value="${requestScope.saleHistory }"></c:set>
 		<c:choose>
 			<c:when test="${ not empty list }">
 				<div class="table-responsive">
@@ -37,23 +37,31 @@
 						<thead>
 							<tr>
 								<th class="text-color">No.</th>
-								<th class="text-color">Name</th>
+								<th class="text-color">Customer Type</th>
+								<th class="text-color">Customer</th>
+								<th class="text-color">Product Name</th>
 								<th class="text-color">Category</th>
-								<th class="text-end text-color">Price</th>
-								<th></th>
+								<th class="text-color">Price</th>
+								<th class="text-color">Qtys</th>
+								<th class="text-color">Total</th>
+								<th class="text-color">Sale Date</th>
+								<th class="text-color">Sale Time</th>
+
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="p" items="${list }" varStatus="count">
+							<c:forEach var="sd" items="${list }" varStatus="count">
 								<tr>
 									<td>${count.index+1 }</td>
-									<td>${p.name }</td>
-									<td>${p.category.name }</td>
-									<td class="text-end text-danger">${p.detailPrice }</td>
-									<td class="text-end"><c:url var="edit"
-											value="/admin/editProduct?id=${p.id }"></c:url> <a
-										href="${edit }" class="btn-style text-end"><i
-											class="bi bi-plus"></i> Edit</a></td>
+									<td>${sd.sale.customer.role }</td>
+									<td>${sd.sale.customer.name }</td>
+									<td>${sd.product.name }</td>
+									<td>${sd.product.category.name }</td>
+									<td>${sd.product.detailPrice }</td>
+									<td>${sd.qty }</td>
+									<td>${sd.product.detailPrice*sd.qty }</td>
+									<td>${sd.sale.saleDate }</td>
+									<td>${sd.sale.saleTime }</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -61,7 +69,7 @@
 				</div>
 			</c:when>
 			<c:otherwise>
-				<p class="text-danger">There is no category yet !</p>
+				<p class="text-danger">There is no sale history yet !</p>
 			</c:otherwise>
 		</c:choose>
 
