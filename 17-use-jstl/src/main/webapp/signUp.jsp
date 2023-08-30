@@ -21,12 +21,12 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<c:url var="addMember" value="/admin/addMember"></c:url>
+	<c:url var="signUp" value="/signUp"></c:url>
 	<app:header pageName="SignUp" ></app:header>
 	<c:set var="m" value="${applicationScope.member }"></c:set>
 	<div class="container mt-4 p-4">
 	<h3 class="text-color"><i class="bi bi-file-earmark-person"></i>Sign Up</h3>
-		<form action="${addMember }" class="form" method="post">
+		<form action="${signUp }" class="form" method="post">
 			<div class="row">
 				<div class="card col-sm-6 p-2">
 					<div class="card-title text-secondary">Member Information</div>
