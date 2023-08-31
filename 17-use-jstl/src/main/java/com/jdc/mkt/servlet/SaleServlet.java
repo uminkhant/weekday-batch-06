@@ -38,6 +38,8 @@ public class SaleServlet extends FactoryServlet {
 		Member member = (Member) getServletContext().getAttribute("member");
 		int total = list.stream().mapToInt(sd -> sd.getQty() * sd.getProduct().getDetailPrice()).sum();
 		var sale = new Sale(member, LocalDate.now(), LocalTime.now(), total);
+		
+		
 		for (SaleDetails d : list) {
 			sale.addSaleDetail(d);
 		}

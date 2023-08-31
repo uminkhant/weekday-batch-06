@@ -95,7 +95,7 @@
 	</div>
 </nav>
 
-<section class="container mt-4 text-center">
+<section class="container mt-4 ">
 
 	<p class="text-danger text-end">${not empty requestScope.message ? requestScope.message :''}</p>
 

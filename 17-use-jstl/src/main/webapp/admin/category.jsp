@@ -46,7 +46,7 @@
 								<tr>
 									<td>${count.index+1 }</td>
 									<td>${c.name }</td>
-									<td class="text-end"><a id="edit"
+									<td class="text-end"><a onclick="myFunction(this)"
 										class="editBtn btn-style text-end"><i class="bi bi-plus"></i>
 											Edit</a></td>
 								</tr>
@@ -96,6 +96,15 @@
 		const dialog = new bootstrap.Modal(modal)
 		dialog.show()
 	})
+
+	</script>
+	<script>
+	function myFunction(element){
+	    if (element){ 
+	    	const dialog = new bootstrap.Modal(modal)    	
+			dialog.show()
+	    }
+	}
 
 	</script>
 </body>

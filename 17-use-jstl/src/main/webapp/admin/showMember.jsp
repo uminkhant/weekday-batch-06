@@ -39,7 +39,8 @@
 						<th class="text-color">City</th>
 						<th class="text-color">Township</th>
 						<th class="text-color">Street</th>
-						<th class="text-color">Phone</th>
+						<th class="text-color">Primary Phone</th>
+						<th class="text-color">Secondary Phone</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -56,10 +57,12 @@
 									<td>${m.address.city }</td>
 									<td>${m.address.township }</td>
 									<td>${m.address.street }</td>
-
-									<td><c:forEach var="p" items="${m.contacts }">
-											<p>${p.phone }</p>
-										</c:forEach></td>
+									<td>${m.contact.primaryPhone }</td>
+									<td>${m.contact.secondaryPhone }</td>
+									<td>
+										<c:url var="edit" value="/admin/editMember?id=${m.id }"></c:url>
+										<a href="${edit }" class="btn-style">Edit</a>
+									</td>
 								</tr>
 							</c:forEach>
 						</c:when>

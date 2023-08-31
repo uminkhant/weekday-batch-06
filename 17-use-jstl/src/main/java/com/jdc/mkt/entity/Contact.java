@@ -7,7 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,14 +23,19 @@ public class Contact implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(nullable = false ,unique = true, length = 12)
-	private String phone;
-	@ManyToOne
+	private String primaryPhone;
+	@Column(unique = true, length = 12)
+	private String secondaryPhone;
+
+	@OneToOne(mappedBy = "contact")
 	private Member member;
-	
-	public Contact(String phone) {
+
+	public Contact(String primaryPhone, String secondaryPhone) {
 		super();
-		this.phone = phone;
+		this.primaryPhone = primaryPhone;
+		this.secondaryPhone = secondaryPhone;
 	}
+	
 	
 	
 	
