@@ -52,8 +52,12 @@
 									<td class="text-end text-danger">${p.detailPrice }</td>
 									<td class="text-end"><c:url var="edit"
 											value="/admin/editProduct?id=${p.id }"></c:url> <a
-										href="${edit }" class="btn-style text-end"><i
-											class="bi bi-plus"></i> Edit</a></td>
+										href="${edit }" class="btn btn-outline-warning "><i
+											class="bi bi-plus"></i> Edit</a>
+									
+										<c:url var="delete" value="/admin/deleteProduct?id=${p.id }"></c:url>
+										<a href="${delete }" class="btn btn-outline-danger ">Delete</a>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>

@@ -24,7 +24,9 @@
 <body>
 	<app:header pageName="Category"></app:header>
 	<div class="container mt-4 p-4 w-75">
-		<h3 class="text-color"><i class="bi bi-tags-fill"></i>Category</h3>
+		<h3 class="text-color">
+			<i class="bi bi-tags-fill"></i>Category
+		</h3>
 		<div class="text-end">
 			<a id="addNewBtn" class="btn-style me-2"><i class="bi bi-plus"></i>
 				Add New</a>
@@ -47,8 +49,10 @@
 									<td>${count.index+1 }</td>
 									<td>${c.name }</td>
 									<td class="text-end"><a onclick="myFunction(this)"
-										class="editBtn btn-style text-end"><i class="bi bi-plus"></i>
-											Edit</a></td>
+										class="editBtn btn btn-outline-warning "><i
+											class="bi bi-plus"></i> Edit</a> <c:url var="delete"
+											value="/admin/deleteCategory?id=${c.id }"></c:url> <a
+										href="${delete }" class="btn btn-outline-danger ">Delete</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>

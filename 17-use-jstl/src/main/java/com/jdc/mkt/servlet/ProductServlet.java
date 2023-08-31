@@ -16,7 +16,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 
-@WebServlet({ "/admin/addProduct", "/admin/showProduct", "/admin/editProduct" ,"/detailProduct"})
+@WebServlet({ 
+	"/admin/addProduct",
+	"/admin/showProduct",
+	"/admin/editProduct",
+	"/admin/deleteProduct",
+	"/detailProduct"})
 @MultipartConfig
 public class ProductServlet extends FactoryServlet {
 
@@ -29,6 +34,13 @@ public class ProductServlet extends FactoryServlet {
 		var qCat = em.createNamedQuery("getAllCategory", Category.class);
 		getServletContext().setAttribute("categories", qCat.getResultList());
 		getServletContext().setAttribute("products", qProdcut.getResultList());
+		
+		Product p = null;
+		var idP = req.getParameter("id");
+		if(null != idP && !idP.isEmpty()) {
+			var id = Integer.parseInt(req.getParameter("id"));
+			p = em.find(Product.class, id);
+		}
 
 		switch (req.getServletPath()) {
 		case "/admin/addProduct":
@@ -41,12 +53,15 @@ public class ProductServlet extends FactoryServlet {
 			getServletContext().getRequestDispatcher("/detailProduct.jsp").forward(req, resp);
 			break;
 		case "/admin/editProduct":
-			var id = Integer.parseInt(req.getParameter("id"));
-			Product p = em.find(Product.class, id);
-			req.setAttribute("product", p);
 			getServletContext().getRequestDispatcher("/admin/addProduct").forward(req, resp);
 			break;
-
+		case "/admin/deleteProduct":
+			em.getTransaction().begin();
+			p.setDeleted(true);
+			em.merge(p);
+			em.getTransaction().commit();		
+			getServletContext().getRequestDispatcher("/admin/showProduct").forward(req, resp);
+			break;
 		}
 	}
 

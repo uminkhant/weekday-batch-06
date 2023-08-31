@@ -32,7 +32,7 @@ public class LoginServlet extends FactoryServlet {
 		var loginId = req.getParameter("loginId");
 		var password = req.getParameter("password");
 		var em = createEntityManager();
-		var query = em.createQuery("select m from Member m where m.loginId = :loginId");
+		var query = em.createQuery("select m from Member m where m.loginId = :loginId and m.isDeleted = false");
 		query.setParameter("loginId", loginId);
 		var members = (List<Member>) query.getResultList();
 

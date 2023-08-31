@@ -59,9 +59,12 @@
 									<td>${m.address.street }</td>
 									<td>${m.contact.primaryPhone }</td>
 									<td>${m.contact.secondaryPhone }</td>
-									<td>
+									<td class="text-end">
 										<c:url var="edit" value="/admin/editMember?id=${m.id }"></c:url>
-										<a href="${edit }" class="btn-style">Edit</a>
+										<a href="${edit }" class="btn btn-outline-warning ">Edit</a>
+									
+										<c:url var="delete" value="/admin/deleteMember?id=${m.id }"></c:url>
+										<a href="${delete }" class="btn btn-outline-danger ">Delete</a>
 									</td>
 								</tr>
 							</c:forEach>

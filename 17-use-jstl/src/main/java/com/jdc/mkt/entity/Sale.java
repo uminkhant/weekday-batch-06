@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,6 +33,8 @@ public class Sale implements Serializable{
 	private LocalDate saleDate;
 	private LocalTime saleTime;
 	private int total;
+	@Column(columnDefinition = "tinyint(1) default '0'")
+	private boolean isDeleted;
 	@OneToMany(mappedBy = "sale",cascade = CascadeType.PERSIST)
 	private List< SaleDetails> saleDetials = new ArrayList<SaleDetails>();
 	

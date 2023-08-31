@@ -2,6 +2,7 @@ package com.jdc.mkt.entity;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,7 +17,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @NoArgsConstructor
-@NamedQuery(name = "getAllSaleDetails",query = "select sd from SaleDetails sd")
+@NamedQuery(name = "getAllSaleDetails",query = "select sd from SaleDetails sd where sd.sale.isDeleted= false")
 public class SaleDetails implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -26,6 +27,7 @@ public class SaleDetails implements Serializable{
 	private int qty;
 	@ManyToOne
 	private Product product;
+	
 	@ManyToOne
 	private Sale  sale;
 	private int total;

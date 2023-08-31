@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@NamedQuery(name = "getAllCategory" ,query = "select c from Category c")
+@NamedQuery(name = "getAllCategory" ,query = "select c from Category c where c.isDeleted = false ")
 public class Category implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -26,6 +27,8 @@ public class Category implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
+	@Column(columnDefinition = "tinyint(1) default '0'")
+	private boolean isDeleted;
 	@OneToMany(mappedBy = "category")
 	private List<Product> products = new ArrayList<Product>() ;
 	

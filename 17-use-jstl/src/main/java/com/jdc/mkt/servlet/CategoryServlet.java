@@ -10,7 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet({"/admin/addCategory","/admin/category"})
+@WebServlet({"/admin/addCategory","/admin/category","/admin/deleteCategory"})
 public class CategoryServlet extends FactoryServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -18,6 +18,15 @@ public class CategoryServlet extends FactoryServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
 		
 		var em = createEntityManager();
+		
+		if(req.getServletPath().equals("/admin/deleteCategory")) {
+			var id = Integer.parseInt( req.getParameter("id"));
+			Category cat = em.find(Category.class, id);
+			em.getTransaction().begin();
+			cat.setDeleted(true);
+			em.merge(cat);
+			em.getTransaction().commit();
+		}
 		var query = em.createNamedQuery("getAllCategory", Category.class);
 		getServletContext().setAttribute("categories", query.getResultList());
 		closeEntityManager();

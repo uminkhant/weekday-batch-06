@@ -19,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@NamedQuery(name = "getAllProduct",query = "select p from Product p ")
+@NamedQuery(name = "getAllProduct",query = "select p from Product p where p.isDeleted= false")
 public class Product implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -34,6 +34,8 @@ public class Product implements Serializable{
 	private String description;
 	@Column(columnDefinition = "varchar(45) not null default 'noImage.png'")
 	private String image;
+	@Column(columnDefinition = "tinyint(1) default '0'")
+	private boolean isDeleted;
 	@ManyToOne
 	private Category category;
 	@OneToMany(mappedBy = "product")

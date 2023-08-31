@@ -24,7 +24,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @DiscriminatorColumn(name = "member_type")
-@NamedQuery(name = "getAllMembers",query = "select m from Member m ")
+@NamedQuery(name = "getAllMembers",query = "select m from Member m where m.isDeleted= false")
 public class Member implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -38,10 +38,13 @@ public class Member implements Serializable{
 	@Column(nullable = false,unique = true)
 	private String loginId;
 	private String password;
+	@Column(columnDefinition = "tinyint(1) default '0'")
+	private boolean isDeleted;
 	@ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
 	private Address address;
 	@OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
 	private Contact contact;
+	
 	
 	public Member(String name, String loginId, String password) {
 		super();
