@@ -30,7 +30,7 @@
 
 	<div class="container mt-4 p-4">
 		<h3 class="text-color">
-			<i class="bi bi-file-earmark-person"></i>Sign Up
+			<i class="bi bi-sheld-lock-fill"></i>Sign Up
 		</h3>
 		<form action="${signUp }" class="form" method="post">
 			<input type="text" name="id"

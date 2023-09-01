@@ -1,9 +1,15 @@
 package com.jdc.mkt.servlet;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import com.jdc.mkt.entity.Member;
 import com.jdc.mkt.entity.Sale;
@@ -15,19 +21,24 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet({"/admin/saleHistory","/sale"})
+@WebServlet({ "/admin/saleHistory", "/sale", "/admin/searchDetail" })
 @SuppressWarnings("unchecked")
 public class SaleServlet extends FactoryServlet {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		var em = createEntityManager();
-		var query = em.createNamedQuery("getAllSaleDetails", SaleDetails.class);
-		req.setAttribute("saleHistory", query.getResultList());
+
+		var category = req.getParameter("category");
+		var customer = req.getParameter("customer");
+		var product = req.getParameter("product");
+		var from = req.getParameter("frm_date");
+		var to = req.getParameter("to_date");
+		System.out.println("Date :================================================="+from+"\t"+to);
+		req.setAttribute("saleHistory", searchBy(customer, category, product, from, to));
 		closeEntityManager();
-		getServletContext().getRequestDispatcher(req.getServletPath().concat(".jsp")).forward(req, resp);
+		getServletContext().getRequestDispatcher("/admin/saleHistory.jsp").forward(req, resp);
 	}
 
 	@Override
@@ -38,8 +49,7 @@ public class SaleServlet extends FactoryServlet {
 		Member member = (Member) getServletContext().getAttribute("member");
 		int total = list.stream().mapToInt(sd -> sd.getQty() * sd.getProduct().getDetailPrice()).sum();
 		var sale = new Sale(member, LocalDate.now(), LocalTime.now(), total);
-		
-		
+
 		for (SaleDetails d : list) {
 			sale.addSaleDetail(d);
 		}
@@ -50,11 +60,51 @@ public class SaleServlet extends FactoryServlet {
 			closeEntityManager();
 			req.getSession().setAttribute("saleDetails", null);
 			resp.sendRedirect("/index.jsp");
-		}else {
+		} else {
 			req.setAttribute("message", "Please LoginId first before you paid !");
 			getServletContext().getRequestDispatcher("/detailsCart.jsp").forward(req, resp);
 		}
-		
+
+	}
+
+	private List<SaleDetails> searchBy(String customerName, String categoryName, String productName,
+			String fromSaleDate, String toSaleDate) {
+		StringBuilder sb = new StringBuilder("select sd from SaleDetails sd where sd.sale.isDeleted = false");
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		if (null != customerName && !customerName.isEmpty()) {
+			sb.append(" and sd.sale.customer.name = :customer");
+			map.put("customer", customerName);
+		}
+
+		if (null != categoryName && !categoryName.isEmpty()) {
+			sb.append(" and sd.product.category.name = :category");
+			map.put("category", categoryName);
+		}
+
+		if (null != productName && !productName.isEmpty()) {
+			sb.append(" and sd.product.name = :product");
+			map.put("product", productName);
+		}
+
+		if (null != fromSaleDate && !fromSaleDate.isEmpty()) {
+			sb.append(" and sd.sale.saleDate >= :frmDate");
+			
+			map.put("frmDate", LocalDate.parse(fromSaleDate));
+		}
+
+		if (null != toSaleDate && !toSaleDate.isEmpty()) {
+			sb.append(" and sd.sale.saleDate <= :toDate");
+			map.put("toDate", LocalDate.parse(toSaleDate));
+		}
+
+		var em = createEntityManager();
+
+		var query = em.createQuery(sb.toString(), SaleDetails.class);
+		for (Entry<String, Object> m : map.entrySet()) {
+			query.setParameter(m.getKey(), m.getValue());
+		}
+		return query.getResultList();
 
 	}
 }

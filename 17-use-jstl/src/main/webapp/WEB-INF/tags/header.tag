@@ -109,7 +109,7 @@
 			<div class="modal-content">
 				<form class="form" action="${ signIn }" method="post">
 					<div class="modal-header">
-						<h5 class="modal-title text-color">Login Form</h5>
+						<h5 class="modal-title text-color"><i class="bi bi-shield-lock"></i> Login Form</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
@@ -118,7 +118,7 @@
 							placeholder="type LoginId" />
 					</div>
 					<div class="modal-body">
-						<input class="form-control" type="text" name="password"
+						<input class="form-control" type="password" name="password"
 							placeholder="type password" />
 					</div>
 					<div class="modal-footer">
@@ -138,7 +138,7 @@
 			<div class="modal-content">
 				<form action="/logout">
 					<div class="modal-header">
-						<h5 class="modal-title text-color">Logout</h5>
+						<h5 class="modal-title text-color"><i class="bi bi-person-fill-lock"></i>Logout</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>

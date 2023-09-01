@@ -24,7 +24,7 @@
 <body>
 
 	<app:header pageName="Sale"></app:header>
-
+<c:url var="search" value="/admin/searchDetail"></c:url>
 	<div class="container mt-4 p-4">
 		<h3 class="text-color">
 			<i class="bi bi-tag-fill"></i>Sale History
@@ -32,7 +32,49 @@
 		<c:set var="list" value="${requestScope.saleHistory }"></c:set>
 		<c:choose>
 			<c:when test="${ not empty list }">
+				<form action="${search }" class="form">
+					<div class="row ">
+						<div class="col-md-8">
+							<div class="row">
+								<div class="col col-md-2">
+									<label for="" class="form-label">Customer Name</label> <input
+										type="text" class="form-control" name="customer" />
+								</div>
+								<div class="col col-md-2">
+									<label for="" class="form-label">Category Name</label> <input
+										type="text" class="form-control" name="category"/>
+								</div>
+
+								<div class="col col-md-2">
+									<label for="" class="form-label">Product Name</label> <input
+										type="text" class="form-control"  name="product"/>
+								</div>
+								<div class="col col-md-auto pt-3">
+									<button class="btn btn-outline-warning p-2 mt-3">
+										<i class="bi bi-search"></i>Search
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="row position-relative">
+								<div class="col ">
+									<label for="" class="form-label">From Date</label> <input
+										type="date" class="form-control" name="frm_date" />
+								</div>
+								<div class="col ">
+									<label for="" class="form-label">To Date</label> <input
+										type="date" class="form-control" name="to_date"/>
+								</div>
+								
+							</div>
+						</div>
+
+					</div>
+				</form>
+
 				<div class="table-responsive">
+
 					<table class="table table-hover">
 						<thead>
 							<tr>
