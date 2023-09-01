@@ -15,7 +15,7 @@ public class ApplicationListener implements ServletContextListener{
 	private EntityManagerFactory emf;
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		emf = Persistence.createEntityManagerFactory("use-jstl");
+		emf = Persistence.createEntityManagerFactory("product-sale");
 		sce.getServletContext().setAttribute("emf", emf);
 		
 		var em = emf.createEntityManager();	
