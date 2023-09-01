@@ -1,11 +1,8 @@
 package com.jdc.mkt.servlet;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,8 +32,10 @@ public class SaleServlet extends FactoryServlet {
 		var product = req.getParameter("product");
 		var from = req.getParameter("frm_date");
 		var to = req.getParameter("to_date");
-		System.out.println("Date :================================================="+from+"\t"+to);
-		req.setAttribute("saleHistory", searchBy(customer, category, product, from, to));
+		var list = searchBy(customer, category, product, from, to);
+		var total = list.stream().mapToInt(sd -> sd.getQty()*sd.getProduct().getDetailPrice()).sum();
+		req.setAttribute("total", total);
+		req.setAttribute("saleHistory", list);
 		closeEntityManager();
 		getServletContext().getRequestDispatcher("/admin/saleHistory.jsp").forward(req, resp);
 	}

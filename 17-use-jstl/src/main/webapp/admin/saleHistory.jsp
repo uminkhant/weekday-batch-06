@@ -83,9 +83,9 @@
 								<th class="text-color">Customer</th>
 								<th class="text-color">Product Name</th>
 								<th class="text-color">Category</th>
-								<th class="text-color">Price</th>
-								<th class="text-color">Qtys</th>
-								<th class="text-color">Total</th>
+								<th class="text-color text-end">Price</th>
+								<th class="text-color text-end">Qtys</th>
+								<th class="text-color text-end">Total</th>
 								<th class="text-color">Sale Date</th>
 								<th class="text-color">Sale Time</th>
 
@@ -99,14 +99,20 @@
 									<td>${sd.sale.customer.name }</td>
 									<td>${sd.product.name }</td>
 									<td>${sd.product.category.name }</td>
-									<td>${sd.product.detailPrice }</td>
-									<td>${sd.qty }</td>
-									<td>${sd.product.detailPrice*sd.qty }</td>
+									<td class="text-danger text-end">${sd.product.detailPrice }</td>
+									<td class="text-danger text-end">${sd.qty }</td>
+									<td class="text-danger text-end">${sd.product.detailPrice*sd.qty }</td>
 									<td>${sd.sale.saleDate }</td>
 									<td>${sd.sale.saleTime }</td>
 								</tr>
 							</c:forEach>
 						</tbody>
+						<tfooter>
+							<tr>
+								<td colspan="9" class="text-color">Totals </td>
+								<td class="text-danger"> <fmt:formatNumber type="currency" currencySymbol="Ks" value="${requestScope.total }"/> </td>
+							</tr>
+						</tfooter>
 					</table>
 				</div>
 			</c:when>

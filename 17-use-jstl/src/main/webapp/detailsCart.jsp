@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html>
@@ -78,7 +79,7 @@
 										<th>Name</th>
 										<th>Price</th>
 										<th>Qtys</th>
-										<th>Total</th>
+										<th class="text-end">Total</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -89,7 +90,7 @@
 											<td>${s.product.name }</td>
 											<td>${s.product.detailPrice }</td>
 											<td>${s.qty }</td>
-											<td>${s.product.detailPrice*s.qty }</td>
+											<td class="text-end">${s.product.detailPrice*s.qty }</td>
 										</tr>
 									</c:forEach>
 
@@ -101,7 +102,7 @@
 										int total = list.stream().mapToInt(sd -> sd.getQty() * sd.getProduct().getDetailPrice()).sum();
 										request.setAttribute("total", total);
 										%>
-										<td class="text-danger">${total}</td>
+										<td class="text-danger text-end"><fmt:formatNumber type="currency" currencySymbol="Ks" value="${total }" /></td>
 									</tr>
 								</tbody>
 							</table>
